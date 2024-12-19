@@ -1,0 +1,34 @@
+{
+    "capabilities": [
+        {
+            "port": 4723,
+            "platformName": "Android",
+            "appium:deviceName": "Redmi 9",
+            "appium:platformVersion": "10",
+            "appium:udid": "EE6HQWAQ4X7XQG7L",
+            "appium:app": "D:\\APIDemos.apk",
+            "appium:automationName": "UiAutomator2"
+        },
+        {
+            "port": 4724,
+            "platformName": "Android",
+            "appium:deviceName": "Redmi 6",
+            "appium:platformVersion": "10",
+            "appium:udid": "de47d8917d29",
+            "appium:app": "D:\\APIDemos.apk",
+            "appium:automationName": "UiAutomator2"
+        }
+    ],
+    "configuration": {
+      "cleanUpCycle": 2000,
+      "timeout": 30000,
+      "proxy": "org.openqa.grid.selenium.proxy.DefaultRemoteProxy",
+      "url": "http://127.0.0.1:4723/wd/hub",
+      "host": "127.0.0.1",
+      "port": 4723,
+      "hubHost": "127.0.0.1",
+      "hubPort": 4444,
+      "maxSession": 1
+    }
+  }
+  

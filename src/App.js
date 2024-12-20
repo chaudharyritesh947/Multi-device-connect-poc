@@ -64,6 +64,16 @@ function App() {
                 automationName: 'UiAutomator2',
             })}>Create Driver for Redmi 9</button>
 
+             <button onClick={() => createDriver({
+                port: 4724,
+                platformName: 'Android',
+                'appium:deviceName': 'Redmi 6',
+                'appium:platformVersion': '10',
+                'appium:udid': 'de47d8917d29',
+                'appium:app': 'D:\\APIDemos.apk',
+                'appium:automationName': 'UiAutomator2',
+            })}>Create Driver for Redmi 6</button>
+            
             <button onClick={stopAllDrivers}>Stop All Drivers</button>
 
             <ul>

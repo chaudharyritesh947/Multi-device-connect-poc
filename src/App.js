@@ -52,15 +52,6 @@ function App() {
     const startDriversParallely = async () => {
         const driversConfig = [
             {
-                port: 4723,
-                platformName: 'Android',
-                deviceName: 'Redmi 9',
-                platformVersion: '10',
-                udid: 'EE6HQWAQ4X7XQG7L',
-                app: 'D:\\APIDemos.apk',
-                automationName: 'UiAutomator2',
-            },
-            {
                 port: 4724,
                 platformName: 'Android',
                 deviceName: 'Redmi 6',
@@ -69,6 +60,15 @@ function App() {
                 app: 'D:\\APIDemos.apk',
                 automationName: 'UiAutomator2',
             },
+            {
+                port: 4723,
+                platformName: 'Android',
+                deviceName: 'Redmi 9',
+                platformVersion: '10',
+                udid: 'EE6HQWAQ4X7XQG7L',
+                app: 'D:\\APIDemos.apk',
+                automationName: 'UiAutomator2',
+            }
         ];
 
        const results = await Promise.all(driversConfig.map((config) => createDriver(config)));

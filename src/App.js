@@ -68,6 +68,15 @@ function App() {
                 udid: 'EE6HQWAQ4X7XQG7L',
                 app: 'D:\\APIDemos.apk',
                 automationName: 'UiAutomator2',
+            },
+            {
+                port: 4725,
+                platformName: 'Android',
+                deviceName: 'RMX3782',
+                platformVersion: '14',
+                udid: 'CESKI7FAO7AAKBWG',
+                app: 'D:\\APIDemos.apk',
+                automationName: 'UiAutomator2',
             }
         ];
 

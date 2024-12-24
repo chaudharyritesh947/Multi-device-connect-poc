@@ -113,6 +113,11 @@ ipcMain.handle('execute-actions', async (_, { sessionId, actions }) => {
                         reject(new Error(message.error));
                     }
                 });
+                worker.on('message', (message) => {
+                    if (message.type === 'progress' && message.sessionId === sessionId) {
+                        mainWindow.webContents.send('progress-update', message);
+                    }
+                });
                 worker.postMessage({ action: 'execute-actions', sessionId, actions });
             });
     

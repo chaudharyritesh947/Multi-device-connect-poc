@@ -1,8 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function App() {
     const [drivers, setDrivers] = useState([]); // Store driver IDs and configurations
     const [log, setLog] = useState([]);
+    const [progress, setProgress] = useState({}); // Track progress for each driver
+
+    useEffect(() => {
+        const { ipcRenderer } = window.electron;
+
+        ipcRenderer.on('progress-update', (message) => {
+            setProgress((prevProgress) => ({
+                ...prevProgress,
+                [message.sessionId]: {
+                    percentage: message.progress,
+                    description: message.stepDescription,
+                },
+            }));
+        });
+
+    }, []);
+
 
     const createDriver = async (config) => {
         try {
@@ -183,6 +200,24 @@ function App() {
                     ))}
                 </ul>
             </div>
+
+            <div style={{ padding: 20 }}>
+            <h1>Mobile Automation POC</h1>
+
+            {/* Render progress */}
+            <h3>Progress</h3>
+            <ul>
+                {Object.entries(progress).map(([sessionId, { percentage, description }]) => (
+                    <li key={sessionId}>
+                        <span>
+                            Driver {sessionId}: {percentage}% - {description}
+                        </span>
+                    </li>
+                ))}
+            </ul>
+
+            {/* Rest of your UI */}
+        </div>
         </div>
     );
 }

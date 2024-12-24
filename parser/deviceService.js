@@ -42,24 +42,18 @@ class DeviceService {
             };
 
             const driver = await remote(options);
-            const driverId = this.drivers.length;
-            this.drivers.push({ id: driverId, driver, config });
-            console.log(this.drivers, " _________________*******************______________________________");
-            console.log(`Driver created for device: ${config.deviceName}`);
-            return driverId;
+            return driver;
         } catch (error) {
             console.error(`Error creating driver for ${config.deviceName}:`, error.message);
             throw error;
         }
     }
 
-    async executeActions(driverId, actions) {
-        console.log(this.drivers, " _________________*******************______________________________")
-        const driverData = this.drivers[driverId];
-        if (!driverData) {
-            throw new Error(`Driver ${driverId} not found`);
+    async executeActions(driver, actions) {
+        if (!driver) {
+            throw new Error(`Driver ${driver} not found`);
         }
-        const { driver, config } = driverData;
+  
         try {
             for (const action of actions) {
                 if (action.type === 'action' && action.action === 'click') {
@@ -69,9 +63,9 @@ class DeviceService {
                     await new Promise((resolve) => setTimeout(resolve, action.value));
                 }
             }
-            console.log(`Actions executed on device: ${config.deviceName}`);
+            console.log(`Actions executed on device: ${driver}`);
         } catch (error) {
-            console.error(`Error executing actions on ${config.deviceName}:`, error.message);
+            console.error(`Error executing actions on ${driver}:`, error.message);
             throw error;
         }
     }
